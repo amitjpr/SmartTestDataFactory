@@ -46,6 +46,7 @@ public class TestDataFactory {
         Map<String, Object> populatedFields = this.record.getPopulatedFieldsAsMap();
         for(Schema.SobjectField field : this.requiredFields) {
             Schema.DescribeFieldResult fieldDescribe = field.getDescribe();
+            
             // If a field was already populated by using the constructor 'TestDataFactory(Sobject record)', then don't change it
             if(populatedFields.containsKey(fieldDescribe.getName())) continue;
 
