@@ -15,9 +15,8 @@ public class TestDataFactory {
     }
 
     public TestDataFactory(Sobject record) {
-        this.record      = record;
-        this.sobjectType = record.getSobjectType();
-
+        this.record         = record;
+        this.sobjectType    = record.getSobjectType();
         this.requiredFields = this.getRequiredFields();
     }
 
@@ -28,6 +27,7 @@ public class TestDataFactory {
 
     private List<Schema.SobjectField> getRequiredFields() {
         List<SobjectField> requiredFields = new List<SobjectField>();
+        
         for(Schema.SobjectField field : this.sobjectType.getDescribe().fields.getMap().values()) {
             Schema.DescribeFieldResult fieldDescribe = field.getDescribe();
 
@@ -37,7 +37,7 @@ public class TestDataFactory {
 
             // If a field is not nillable & it is createable, then it's required
             requiredFields.add(field);
-        }
+        }//End of for loop
 
         return requiredFields;
     }
